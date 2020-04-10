@@ -1,0 +1,69 @@
+@font-face {font-family: "AkzidenzGrotesk"; src: url("//db.onlinewebfonts.com/t/53c0b5ca4d4f261f0b4bacba005484ef.eot"); src: url("//db.onlinewebfonts.com/t/53c0b5ca4d4f261f0b4bacba005484ef.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/53c0b5ca4d4f261f0b4bacba005484ef.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/53c0b5ca4d4f261f0b4bacba005484ef.woff") format("woff"), url("//db.onlinewebfonts.com/t/53c0b5ca4d4f261f0b4bacba005484ef.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/53c0b5ca4d4f261f0b4bacba005484ef.svg#AkzidenzGrotesk") format("svg"); }
+
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.content-cont {
+  background: #000;
+}
+
+.sidebar-cont {
+  overflow: hidden;
+  width: 35rem;
+  padding-right: 10px;
+}
+
+:host ::ng-deep {
+  .mat-drawer-inner-container {
+    overflow: hidden !important;
+  }
+
+  app-header {
+    .header-cont {
+      padding-left: 50px !important;
+    }
+    display: block;
+    margin-bottom: 115px;
+  }
+}
+
+.custom-scrollbar {
+  --scrollbar-padding: 8px;
+}
+
+h1 {
+  display: block;
+  position: relative;
+  font-family: 'AkzidenzGroteskRoman';
+  font-weight: normal;
+  text-align: center;
+  font-size: 1.5em;
+  line-height: 1.1em;
+  letter-spacing: 0.1em;
+  color: #111;
+  margin-bottom: 1.5em;
+  text-align: center;
+  text-transform: uppercase;
+  padding-bottom: 15px;
+  margin-bottom: 30px;
+
+  &:after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 150px;
+    border-bottom: 1px solid #999;
+  }
+}
+
+.text-cont {
+  padding-right: 25px;
+  text-align: justify;
+}

@@ -1,0 +1,70 @@
+$border-color: #BF6D54;
+$hover: #DE9A86;
+
+.uploadfilecontainer {
+  background-repeat: no-repeat;
+  background-size: 100px;
+  background-position: center;
+  height: 200px;
+  width: 80%;
+  border: 2px dashed $border-color;
+  border-radius: 10px;
+  background: #E5ABA1;
+  transition: 0.3s all ease-in-out;
+  position: relative;
+  
+  mat-icon {
+    font-size: 50px;
+    color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%,-50%);
+  }
+}
+
+.uploadfilecontainer:hover {
+  cursor: pointer;
+  background-color: $hover !important;
+  opacity: 0.8;
+}
+
+.files-list {
+  display: inline-block;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  margin: 10px 10px 0 0 ;
+  border: 1px dashed;
+  border-radius: 12px;
+  padding: 5px;
+  color: $border-color;
+}
+
+.files-list .delete-file {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.files-list .delete-file img {
+  width: 30px;
+}
+
+.close-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 0;
+  top: 3px;
+  right: 3px;
+  border-radius: 50%;
+  z-index: 1;
+  background: white;
+  cursor: pointer;
+}

@@ -1,1 +1,99 @@
-/* You can add global styles to this file, and also import other style files */
+html, body, app-root {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+app-home {
+  display: block;
+  width: 100%;
+  height: 100vh;
+}
+
+// Styling of the slider
+
+.carousel {
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.carousel-inner, .carousel-item {
+  height: 100%;
+}
+
+.carousel-control-prev{
+  justify-content: left;
+  
+  .carousel-control-prev-icon {
+    margin-left: 30px;
+  }
+}
+
+.carousel-control-next {
+  justify-content: flex-end;
+
+  .carousel-control-next-icon {
+    margin-right: 30px;
+  }
+}
+
+.carousel .carousel-control-next-icon, .carousel .carousel-control-prev-icon {
+  width: 4.25rem !important;
+  height: 4.25rem !important;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  width: 10%;
+  z-index: 11;
+}
+
+.carousel-item {
+  .carousel-caption {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    width: 40%;
+    height: 100%;
+  }
+}
+
+app-home {
+  position: relative;
+  z-index: 0;
+
+  app-slider {
+    z-index: -1;
+  }
+}
+
+app-header {
+  z-index: 1;
+}
+
+app-slider {
+  z-index: -1;
+}
+
+.carousel-indicators {
+  margin-bottom: 30px;
+}
+
+.carousel-indicators {
+ li {
+  width: 15px !important;
+  height: 15px !important;
+  background: transparent;
+  border: 1px solid #fff;
+  transition: all ease-in-out 0.3s;
+  &:hover {
+    background: #fff;
+  }
+ }
+
+ li.active {
+  background: #fff;
+ }
+}
+// end of slider styling
