@@ -47,7 +47,6 @@ import { DragDropDirective } from '../common/directives/drag-and-drop.directive'
 import { NgxMasonryModule } from 'ngx-masonry';
 import { PageOptionsComponent } from '../page-creator/page-options/page-options.component';
 import { PageCardComponent } from '../page-creator/page-card/page-card.component';
-import { HeaderComponent } from '../components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +54,6 @@ import { HeaderComponent } from '../components/header/header.component';
     DragDropDirective,
     PageOptionsComponent,
     PageCardComponent,
-    HeaderComponent
   ],
   imports: [
     NgxMasonryModule,
@@ -91,7 +89,6 @@ import { HeaderComponent } from '../components/header/header.component';
   ],
 
   exports: [
-    HeaderComponent,
     NgxMasonryModule,
     LightboxModule,
     MasonryGalleryModule,

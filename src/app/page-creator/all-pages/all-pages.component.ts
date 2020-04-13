@@ -67,7 +67,7 @@ export class AllPagesComponent implements OnInit, OnDestroy {
       (data) => {
         console.log(data)
         this.pagesCount = data.pages.pagesCount;
-        this.pages = data.posts.posts
+        this.pages = data.pages.pages
       }
     );
   }
