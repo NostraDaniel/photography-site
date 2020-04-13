@@ -1,0 +1,19 @@
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col col-lg-12">
+        <a mat-button routerLink="/blog" class="creator-btn">Back</a>
+        <div class="heading-cont left">
+          <h1>{{post.title}}</h1>
+        </div>
+        <article [innerHTML]="post.content" class="content">
+
+        </article>
+        
+        <div class="gallery" *ngIf="post.__gallery__.length > 0">
+            <ngx-masonry-gallery (clickImage)="clickedImage($event)" [width]='250' [images]='images'></ngx-masonry-gallery>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

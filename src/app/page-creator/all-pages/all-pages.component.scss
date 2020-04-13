@@ -1,0 +1,41 @@
+body {
+  background: black;
+}
+
+.create-btn {
+  color: #fff;
+  background: #DE9A86;
+  border:1px solid #DE9A86;
+  transition: 0.3s all ease-in-out;
+
+  &:hover, &:focus {
+    background: #BF6D54;
+  }
+}
+
+h3 {
+  margin-bottom: 15px;
+}
+
+.space-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.all-posts-container {
+  position: relative;
+
+  @media screen and(max-width: 766px){
+    padding-top: 70px;
+  }
+
+  .sidebar-container {
+    @media screen and(max-width: 766px){
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+}

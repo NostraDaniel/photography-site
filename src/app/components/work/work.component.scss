@@ -19,7 +19,14 @@
 }
 
 :host ::ng-deep {
+  .content-cont {
+    position: relative;
+    overflow-x: hidden;
+  }
+  
   .mat-drawer-inner-container {
+    position: relative;
+    padding-top: 50px;
     overflow: hidden !important;
   }
 
@@ -66,4 +73,53 @@ h1 {
 .text-cont {
   padding-right: 25px;
   text-align: justify;
+}
+
+.masonry-item { 
+  display: block;
+  width: 300px; 
+  height: auto;
+  margin-bottom: 20px; 
+  img {
+    width: 300px;
+    height: auto;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  background: white;
+}
+
+.info-btn {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  top: 30%;
+  left: 0;
+  background: white;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 20;
+  transition: 0.3s all ease-in-out;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  // &.hidden {
+  //   visibility: hidden;
+  //   opacity: 1;
+  // }
+
+  &:hover, &:focus {
+  opacity: 0.6;
+  }
 }

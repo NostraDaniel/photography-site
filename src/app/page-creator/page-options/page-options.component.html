@@ -1,0 +1,13 @@
+<div class="options-cont">
+    <button mat-button [matMenuTriggerFor]="belowMenu" class="card-menu"><mat-icon>more_vert</mat-icon></button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button mat-menu-item  
+        (click)="editPage(page)">
+        <mat-icon>edit</mat-icon> Edit
+      </button>
+      <button mat-menu-item 
+        (click)="delete(page.id)">
+        <mat-icon>delete</mat-icon> Delete
+      </button>
+    </mat-menu>
+  </div>

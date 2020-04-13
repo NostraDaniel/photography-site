@@ -44,13 +44,21 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DragAndDropComponent } from '../components/drag-and-drop/drag-and-drop.component';
 import { DragDropDirective } from '../common/directives/drag-and-drop.directive';
+import { NgxMasonryModule } from 'ngx-masonry';
+import { PageOptionsComponent } from '../page-creator/page-options/page-options.component';
+import { PageCardComponent } from '../page-creator/page-card/page-card.component';
+import { HeaderComponent } from '../components/header/header.component';
 
 @NgModule({
   declarations: [
     DragAndDropComponent,
     DragDropDirective,
+    PageOptionsComponent,
+    PageCardComponent,
+    HeaderComponent
   ],
   imports: [
+    NgxMasonryModule,
     MasonryGalleryModule,
     CommonModule,
     FormsModule,
@@ -83,6 +91,8 @@ import { DragDropDirective } from '../common/directives/drag-and-drop.directive'
   ],
 
   exports: [
+    HeaderComponent,
+    NgxMasonryModule,
     LightboxModule,
     MasonryGalleryModule,
     MatToolbar,
@@ -124,7 +134,9 @@ import { DragDropDirective } from '../common/directives/drag-and-drop.directive'
     MatSlideToggleModule,
     DragAndDropComponent,
     DragDropDirective,
-    MatSidenavModule
+    MatSidenavModule,
+    PageOptionsComponent,
+    PageCardComponent
   ]
 })
 export class SharedModule {}

@@ -1,3 +1,7 @@
+
+@import '~ngx-toastr/toastr';
+@import './custom-form.scss';
+
 html, body, app-root {
   display: block;
   width: 100%;
@@ -97,3 +101,7 @@ app-slider {
  }
 }
 // end of slider styling
+ngx-masonry {
+  margin: 0 auto;
+}
+

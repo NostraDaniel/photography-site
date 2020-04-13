@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IMasonryGalleryImage } from 'ngx-masonry-gallery';
 import { Lightbox } from 'ngx-lightbox';
+import { NgxMasonryOptions } from 'ngx-masonry';
 
 @Component({
   selector: 'app-work',
@@ -8,10 +9,16 @@ import { Lightbox } from 'ngx-lightbox';
   styleUrls: ['./work.component.scss']
 })
 export class WorkComponent implements OnInit {
-  opened: boolean = true;
+  opened: boolean = false;
+  public masonryOptions: NgxMasonryOptions = {
+		transitionDuration: '0.2s',
+		gutter: 20,
+		resize: true,
+		initLayout: true,
+		fitWidth: true
+	};
   // private masonryImages: string[];
-  private urls: string[] = [
-
+  public urls: string[] = [
     '../../../assets/test/iliqna2.jpg',
     '../../../assets/test/iliqna3.jpg',
      '../../../assets/images/slider/1.jpg',
@@ -31,6 +38,9 @@ export class WorkComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    window.setTimeout(() => {
+      this.opened = true;
+    }, 1000)
   }
 
   public get images(): IMasonryGalleryImage[] {

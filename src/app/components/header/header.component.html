@@ -7,8 +7,9 @@
     <div class="menu">
       <nav>
         <ul class="menu-list">
-          <li routerLinkActive="current"><a routerLink="/home"  class="menu-link">Home</a></li>
-          <li routerLinkActive="current"><a routerLink="/work" routerLinkActive="active-link" class="menu-link">Gallery</a></li>
+          <li routerLinkActive="current"><a href="/home"  class="menu-link">Home</a></li>
+          <li *ngIf="isLogged" routerLinkActive="current"><a routerLink="/page-creator" routerLinkActive="active-link" class="menu-link">Page creator</a></li>
+          <li *ngIf="isLogged" routerLinkActive="current"><a routerLink="/work" routerLinkActive="active-link" class="menu-link">Work</a></li>
         </ul>
       </nav>
     </div>

@@ -1,0 +1,22 @@
+<mdb-card class="card card-cascade narrower wow fadeIn" data-wow-delay="0.6s">
+  <div class="view view-cascade overlay" mdbWavesEffect>
+    <!-- Card img -->
+    <a (click)="showPage(page.id)">
+      <div class="mask rgba-white-slight waves-effect waves-light"></div>
+    </a>
+  </div>
+  <!--Card content-->
+  <mdb-card-body>
+    <!--Title-->
+    <mdb-card-title>
+      <h4>{{page.title}}</h4>
+    </mdb-card-title>
+
+    <!--Text-->
+    <mdb-card-text>{{page.description}}
+    </mdb-card-text>
+
+    <a (click)="showPage(page.id)"  mdbBtn class="creator-btn" mdbWavesEffect>See more</a>
+    
+  </mdb-card-body>
+</mdb-card>

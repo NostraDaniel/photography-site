@@ -1,0 +1,71 @@
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+<h1 mat-dialog-title>Edit</h1>
+<div class="dialog-content" mat-dialog-content>
+
+    <label for="title">Title</label>
+    <div class="wrap-input100 validate-input">
+      <input class="input100" type="text" formControlName="title" id="title" placeholder="Title">
+      <span class="focus-input100"></span>
+    </div>
+
+    <label for="description">Description</label>
+    <div class="wrap-input100 validate-input">
+      <input class="input100" type="text" formControlName="description" id="description" placeholder="Description">
+      <span class="focus-input100"></span>
+    </div>
+
+    <div class="margin-bottom">
+      <label >Content</label>
+      <ckeditor (ready)="onReady($event)" [editor]="editor" formControlName="content"></ckeditor>
+    </div>
+
+    <div class="margin-bottom">
+      <mat-slide-toggle formControlName="isPublished">Publish</mat-slide-toggle>
+    </div>
+    <div class="margin-bottom image-upload-container">
+      <label>
+        Gallery
+      </label>
+      <app-drag-and-drop [galleryFilesEdit]="data.__gallery__" (filesEvent)='changeGalleryFiles($event)' (deletedImgEvent)="addDeletedImg($event)"></app-drag-and-drop>
+    </div>
+    <div *ngIf="submitted" class="validation">
+      <div *ngIf="title.invalid">
+        <span *ngIf="title.errors.required">
+          Title is required!
+        </span>
+        <span *ngIf="title.errors.minlength  && (title.dirty || title.touched)">
+          Title has to be at least 5 charecters long!
+        </span>
+        <span *ngIf="title.errors.maxlength  && (title.dirty || title.touched)">
+          Title can be maximum 100 charecters long!
+        </span>
+      </div>
+      <div *ngIf="content.invalid">
+        <span *ngIf="content.errors.required">
+          Content is required!
+        </span>
+        <span *ngIf="content.errors.minlength  && (content.dirty || content.touched)">
+          Content has to be at least 8 charecters long!
+        </span>
+        <span *ngIf="content.errors.maxlength  && (content.dirty || content.touched)">
+          Content can be maximum 10 000 charecters long!
+        </span>
+      </div>
+      <div *ngIf="description.invalid">
+        <span *ngIf="description.errors.required">
+          Description is required!
+        </span>
+        <span *ngIf="description.errors.minlength  && (description.dirty || description.touched)">
+          Description has to be at least 5 charecters long!
+        </span>
+        <span *ngIf="description.errors.maxlength  && (description.dirty || description.touched)">
+          Description can be maximum 1000 charecters long!
+        </span>
+      </div>
+    </div>
+  </div>
+  <div mat-dialog-actions>
+    <button action="submit"  mat-button class="creator-btn" cdkFocusInitial>Edit</button>
+    <a mat-button class="close-btn" (click)="closeDialog()">Back</a>
+  </div>
+</form>
