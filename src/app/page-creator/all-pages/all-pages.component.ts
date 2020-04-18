@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
 import { IPage } from 'src/app/common/interfaces/page';
 import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
-import { NotificatorService } from 'src/app/core/services/notificator.service';
+import { NotificatorService } from 'src/app/shared/services/notificator.service';
 import { AuthService } from 'src/app/core/services/auth.services';
 import { ActivatedRoute } from '@angular/router';
 import { PagesService } from 'src/app/core/services/pages.service';

@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { FormBuilder, Validators } from '@angular/forms';
-import { NotificatorService } from 'src/app/core/services/notificator.service';
+import { NotificatorService } from 'src/app/shared/services/notificator.service';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { UploadAdapter } from 'src/app/common/classes/upload-adapter';
 import { Observable } from 'rxjs';

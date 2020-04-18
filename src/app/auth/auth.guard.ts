@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { NotificatorService } from '../core/services/notificator.service';
+import { NotificatorService } from '../shared/services/notificator.service';
 import { AuthService } from '../core/services/auth.services';
 
 @Injectable({

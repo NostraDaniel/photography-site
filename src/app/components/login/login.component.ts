@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.services';
-import { NotificatorService } from 'src/app/core/services/notificator.service';
+import { NotificatorService } from 'src/app/shared/services/notificator.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -32,5 +32,4 @@ export class LoginComponent implements OnInit {
       },
     );
   }
-
 }

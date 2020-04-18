@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.services';
-import { NotificatorService } from 'src/app/core/services/notificator.service';
+import { NotificatorService } from 'src/app/shared/services/notificator.service';
 
 @Component({
   selector: 'app-header',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { PagesService } from 'src/app/core/services/pages.service';
-import { NotificatorService } from 'src/app/core/services/notificator.service';
+import { NotificatorService } from 'src/app/shared/services/notificator.service';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';

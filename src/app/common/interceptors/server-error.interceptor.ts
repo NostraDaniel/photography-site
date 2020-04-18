@@ -8,8 +8,8 @@ import {
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { NotificatorService } from 'src/app/core/services/notificator.service';
-import { StorageService } from 'src/app/core/services/storage.service';
+import { NotificatorService } from 'src/app/shared/services/notificator.service';
+import { StorageService } from 'src/app/shared/services/storage.service';
 import { AuthService } from 'src/app/core/services/auth.services';
 
 @Injectable()

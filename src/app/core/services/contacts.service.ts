@@ -11,7 +11,6 @@ export class ContactsService {
   ) { }
 
   public sendFeedback(formData) {
-    console.log('ot service-a',formData);
     return this.http.post('http://localhost:4202/feedback', formData);
   }
 }

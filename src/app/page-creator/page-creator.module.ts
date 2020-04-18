@@ -12,15 +12,22 @@ import { EditPageDialogComponent } from './edit-page-dialog/edit-page-dialog.com
 import { MasonryGalleryModule } from 'ngx-masonry-gallery';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ServerErrorInterceptor } from '../common/interceptors/server-error.interceptor';
-import { AuthTokenInterceptor } from '../common/interceptors/auth.interceptor';
+import { AuthTokenInterceptor } from '../auth/auth.interceptor';
 import { SpinnerInterceptor } from '../common/interceptors/spinner.interceptor';
+import { PageCardComponent } from './page-card/page-card.component';
+import { TestComponent } from './test/test.component';
+import { PageCard2Component } from './page-card2/page-card2.component';
+import { PageOptionsComponent } from './page-options/page-options.component';
 
 @NgModule({
   declarations: [
     EditPageDialogComponent,
     AllPagesComponent, 
     CreatePageComponent, 
-    SinglePageComponent,
+    SinglePageComponent, 
+    TestComponent, 
+    PageCard2Component,
+    PageOptionsComponent
   ],
   imports: [
     CommonModule,

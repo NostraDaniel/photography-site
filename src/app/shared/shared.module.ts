@@ -45,15 +45,15 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DragAndDropComponent } from '../components/drag-and-drop/drag-and-drop.component';
 import { DragDropDirective } from '../common/directives/drag-and-drop.directive';
 import { NgxMasonryModule } from 'ngx-masonry';
-import { PageOptionsComponent } from '../page-creator/page-options/page-options.component';
 import { PageCardComponent } from '../page-creator/page-card/page-card.component';
+import { NotificatorService } from './services/notificator.service';
+import { StorageService } from './services/storage.service';
 
 @NgModule({
   declarations: [
     DragAndDropComponent,
     DragDropDirective,
-    PageOptionsComponent,
-    PageCardComponent,
+    PageCardComponent
   ],
   imports: [
     NgxMasonryModule,
@@ -132,8 +132,11 @@ import { PageCardComponent } from '../page-creator/page-card/page-card.component
     DragAndDropComponent,
     DragDropDirective,
     MatSidenavModule,
-    PageOptionsComponent,
     PageCardComponent
+  ],
+  providers: [
+    NotificatorService,
+    StorageService,
   ]
 })
 export class SharedModule {}

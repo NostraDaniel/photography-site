@@ -9,7 +9,7 @@
   <mdb-card-body>
     <!--Title-->
     <mdb-card-title>
-      <h4>{{page.title}}</h4>
+      <h4>{{page.name}}</h4>
     </mdb-card-title>
 
     <!--Text-->
@@ -17,6 +17,6 @@
     </mdb-card-text>
 
     <a (click)="showPage(page.id)"  mdbBtn class="creator-btn" mdbWavesEffect>See more</a>
-    
+    <app-page-options *ngIf="showOptions" (deleteOptionEvent)='delete($event)' (editPageEvent)="editPost($event)" [page]="page"></app-page-options>
   </mdb-card-body>
 </mdb-card>
