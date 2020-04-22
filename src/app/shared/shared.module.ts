@@ -45,7 +45,6 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DragAndDropComponent } from '../components/drag-and-drop/drag-and-drop.component';
 import { DragDropDirective } from '../common/directives/drag-and-drop.directive';
 import { NgxMasonryModule } from 'ngx-masonry';
-import { PageCardComponent } from '../page-creator/page-card/page-card.component';
 import { NotificatorService } from './services/notificator.service';
 import { StorageService } from './services/storage.service';
 
@@ -53,7 +52,6 @@ import { StorageService } from './services/storage.service';
   declarations: [
     DragAndDropComponent,
     DragDropDirective,
-    PageCardComponent
   ],
   imports: [
     NgxMasonryModule,
@@ -132,7 +130,6 @@ import { StorageService } from './services/storage.service';
     DragAndDropComponent,
     DragDropDirective,
     MatSidenavModule,
-    PageCardComponent
   ],
   providers: [
     NotificatorService,

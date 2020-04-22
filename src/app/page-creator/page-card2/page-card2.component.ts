@@ -21,7 +21,7 @@ export class PageCard2Component implements OnInit {
   }
 
   showPage(id: string): void {
-    this.router.navigate([`/blog/post/${id}`]);
+    this.router.navigate([`/work/${id}`]);
   }
 
   delete(id: string): void {

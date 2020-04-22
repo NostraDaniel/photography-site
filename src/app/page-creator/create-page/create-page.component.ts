@@ -3,6 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { NotificatorService } from 'src/app/shared/services/notificator.service';
 import { Observable } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
+
 import { Router } from '@angular/router';
 import { UploadAdapter } from 'src/app/common/classes/upload-adapter';
 import { PagesService } from 'src/app/core/services/pages.service';
@@ -21,14 +23,12 @@ export class CreatePageComponent {
   private validImageExtentions: string[] = ['image/jpeg', 'image/jpg', 'image/png','image/gif'];
 
   public editor = ClassicEditor;
-  public postForm = this.fb.group({
+  public pageForm = this.fb.group({
     isPublished:[false],
     title: ['', [ Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
     name: ['', [ Validators.required, Validators.minLength(3), Validators.maxLength(30)]],
     content: ['', [ Validators.required, Validators.minLength(15),Validators.maxLength(10000)]],
     description: ['', [ Validators.required, Validators.minLength(5), Validators.maxLength(1000)]],
-    isFrontPage: [false],
-    frontImage: [''],
     gallery: ['']
   });
   public submitted: boolean = false;
@@ -39,9 +39,9 @@ export class CreatePageComponent {
     private readonly pagesService: PagesService
   ) {}
 
-  public get title() { return this.postForm.get('title'); }
-  public get content() { return this.postForm.get('content'); }
-  public get description() { return this.postForm.get('description'); }
+  public get title() { return this.pageForm.get('title'); }
+  public get content() { return this.pageForm.get('content'); }
+  public get description() { return this.pageForm.get('description'); }
 
   onReady(eventData) {
     eventData.plugins.get('FileRepository').createUploadAdapter = (loader) => {
@@ -85,24 +85,23 @@ export class CreatePageComponent {
   onSubmit() {
     this.submitted = true;
 
-    if(this.postForm.valid) {
-      this.uploadMultipleImages(this.galleryImages).subscribe((galleryRes) => {
-        this.postForm.controls['gallery'].setValue(galleryRes);
+    if(this.pageForm.valid) {
+      const gallery$ = this.uploadMultipleImages(this.galleryImages);
+      const newPage$ = gallery$.pipe(switchMap(galleryRes => {
+        this.pageForm.controls['gallery'].setValue(galleryRes);
 
-        this.pagesService.createPost(this.postForm.value).subscribe(postRes => {
-          this.router.navigate([`blog/post/${postRes['id']}`]);
-        },
-        (err) => {
-          err.error.message.forEach(errObj=> {
-            for (const key in errObj.constraints) {
-              this.notificator.error(errObj.constraints[key]);
-            }
-          });
+        return this.pagesService.createPost(this.pageForm.value); 
+      }));
+
+      newPage$.subscribe((res) => {
+        this.router.navigate([`work/${res['id']}`]);
+      },(err) => {
+        err.error.message.forEach(errObj=> {
+          for (const key in errObj.constraints) {
+            this.notificator.error(errObj.constraints[key]);
+          }
         });
-      },
-      (err) => {
-        this.notificator.error('There was problem with uploading the gallery images.');
-      });
+      })
     }
   }
 

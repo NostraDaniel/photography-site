@@ -1,4 +1,4 @@
-<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="pageForm" (ngSubmit)="onSubmit()">
 <h1 mat-dialog-title>Edit</h1>
 <div class="dialog-content" mat-dialog-content>
 
@@ -65,7 +65,7 @@
     </div>
   </div>
   <div mat-dialog-actions>
-    <button action="submit"  mat-button class="creator-btn" cdkFocusInitial>Edit</button>
+    <button action="submit"  mat-button class="creator-btn" cdkFocusInitial>Save</button>
     <a mat-button class="close-btn" (click)="closeDialog()">Back</a>
   </div>
 </form>

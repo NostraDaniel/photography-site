@@ -1,10 +1,10 @@
-import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
-import { IPage } from 'src/app/common/interfaces/page';
-import { PageEvent } from '@angular/material/paginator';
-import { Subscription } from 'rxjs';
-import { NotificatorService } from 'src/app/shared/services/notificator.service';
-import { AuthService } from 'src/app/core/services/auth.services';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { PageEvent } from '@angular/material/paginator';
+
+import { IPage } from 'src/app/common/interfaces/page';
+import { NotificatorService } from 'src/app/shared/services/notificator.service';
 import { PagesService } from 'src/app/core/services/pages.service';
 
 @Component({
@@ -14,38 +14,30 @@ import { PagesService } from 'src/app/core/services/pages.service';
 })
 export class AllPagesComponent implements OnInit, OnDestroy {
 
-  private subscription: Subscription;
-  private isLogged: boolean = false;
+  private search$: Subscription;
+  private routeData$: Subscription;
+  private allPages$: Subscription;
 
-  public pages: IPage[] = [];
-  public pagesCount: number;
-  public filter: string = '';
-  public pageEvent: PageEvent;
+  private opened: boolean = true;
+  private pages: IPage[] = [];
+  private pagesCount: number;
+  private filter: string = '';
 
   constructor(
     private readonly route: ActivatedRoute,
     private readonly pagesService: PagesService,
-    private readonly notificator: NotificatorService,
-    private readonly auth: AuthService,
+    private readonly notificator: NotificatorService
   ) { 
   }
 
   ngOnInit() {
     this.getAllPages();
-    
-    this.subscription = this.auth.user$.subscribe(
-      username => {
-        if (username === null) {
-          this.isLogged = false;
-        } else {
-          this.isLogged = true;
-        }
-      }
-    );
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.search$.unsubscribe();
+    this.routeData$.unsubscribe();
+    this.allPages$.unsubscribe();
   }
 
   delete(id: string): void {
@@ -63,20 +55,19 @@ export class AllPagesComponent implements OnInit, OnDestroy {
   }
 
   private getAllPages() {
-    this.route.data.subscribe(
+    this.routeData$ = this.route.data.subscribe(
       (data) => {
-        console.log(data)
         this.pagesCount = data.pages.pagesCount;
         this.pages = data.pages.pages
       }
     );
   }
 
-  changePage(event) {
+  private changePage(event) {
     const pageIndex = event.pageIndex + 1;
     const pageSize = event.pageSize;
 
-    this.pagesService.getAllPages(pageIndex, pageSize, this.filter).subscribe(
+    this.allPages$ = this.pagesService.getAllPages(pageIndex, pageSize, this.filter).subscribe(
       (pages) => {
         this.pages = pages.pages;
       },
@@ -86,10 +77,10 @@ export class AllPagesComponent implements OnInit, OnDestroy {
     )
   }
 
-  search(searchStr) {
+  private search(searchStr) {
     this.filter = searchStr;
     
-    this.pagesService.getAllPages(1, 12, this.filter).subscribe(
+    this.search$ = this.pagesService.getAllPages(1, 12, this.filter).subscribe(
       (pages) => {
         this.pages = pages.pages;
       },

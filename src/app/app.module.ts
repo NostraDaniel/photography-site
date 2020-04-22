@@ -10,10 +10,11 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { WorkComponent } from './components/work/work.component';
-import { HeaderComponent } from './components/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { ServerErrorComponent } from './components/server-error/server-error.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SinglePageResolverService } from './page-creator/services/single-page-resolver.service';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     SharedModule,
   ],
   providers: [
+    SinglePageResolverService
   ],
   bootstrap: [AppComponent]
 })

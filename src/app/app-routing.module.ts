@@ -5,12 +5,13 @@ import { WorkComponent } from './components/work/work.component';
 import { LoginComponent } from './components/login/login.component';
 import { ServerErrorComponent } from './components/server-error/server-error.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { SinglePageResolverService } from './page-creator/services/single-page-resolver.service';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  { path: 'work', component: WorkComponent },
+  { path: 'work/:id', component: WorkComponent, resolve: {page: SinglePageResolverService } },
   { path: 'login', component: LoginComponent },
   { path: 'page-creator', loadChildren: './page-creator/page-creator.module#PageCreatorModule' },
   { path: 'server-error', component: ServerErrorComponent },

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { PagesService } from 'src/app/core/services/pages.service';
 import { NotificatorService } from 'src/app/shared/services/notificator.service';
 import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -19,11 +19,13 @@ export class SinglePageResolverService {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ) {
-    return this.pagesService.getSinglePost(route.params.id)
-      .pipe(catchError(res => {
-        this.notificator.error(res.error.error);
-        return of ({page: {}});
-      }
-    ))
+    console.log('tukatei');
+    return this.pagesService.getSinglePage(route.params.id)
+      .pipe(
+        catchError(res => {
+          this.notificator.error(res.error.error);
+          return of ({page: {}});
+        })
+      )
   }
 }

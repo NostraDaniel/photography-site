@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IMasonryGalleryImage } from 'ngx-masonry-gallery';
+import { ActivatedRoute } from '@angular/router';
 import { Lightbox } from 'ngx-lightbox';
+import { IMasonryGalleryImage } from 'ngx-masonry-gallery';
 import { NgxMasonryOptions } from 'ngx-masonry';
+import { PagesService } from 'src/app/core/services/pages.service';
 
 @Component({
   selector: 'app-work',
@@ -9,15 +11,16 @@ import { NgxMasonryOptions } from 'ngx-masonry';
   styleUrls: ['./work.component.scss']
 })
 export class WorkComponent implements OnInit {
-  opened: boolean = false;
+  public opened: boolean = false;
   public masonryOptions: NgxMasonryOptions = {
 		transitionDuration: '0.2s',
 		gutter: 20,
 		resize: true,
 		initLayout: true,
 		fitWidth: true
-	};
-  // private masonryImages: string[];
+  };
+  public page$;
+  public page2;
   public urls: string[] = [
     '../../../assets/test/iliqna2.jpg',
     '../../../assets/test/iliqna3.jpg',
@@ -34,13 +37,38 @@ export class WorkComponent implements OnInit {
   ];
 
   constructor(
-    private readonly lightbox: Lightbox
+    private readonly lightbox: Lightbox,
+    private readonly route: ActivatedRoute,
+    private readonly pagesService: PagesService
   ) { }
 
   ngOnInit() {
     window.setTimeout(() => {
       this.opened = true;
     }, 1000)
+
+    this.route.params.subscribe(info => {
+      this.pagesService.getSinglePage(info.id)
+        .subscribe(res => {
+          console.log('ot components', res);
+        });
+    })
+    console.log('важно',this.route.params);
+    // this.page2 = this.pagesService.getSinglePage(this.route.params)
+    //   .subscribe(res => {
+    //     console.log('ot components', res);
+    //   });
+
+
+    this.page$ = this.route.data.subscribe(
+      (data) => {
+        console.log(data);
+      }
+    );
+  }
+
+  ngOnDestroy() {
+    this.page$.unsubscribe();
   }
 
   public get images(): IMasonryGalleryImage[] {

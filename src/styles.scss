@@ -2,6 +2,10 @@
 @import '~ngx-toastr/toastr';
 @import './custom-form.scss';
 
+* {
+  outline: none !important;
+}
+
 html, body, app-root {
   display: block;
   width: 100%;

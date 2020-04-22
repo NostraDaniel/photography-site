@@ -15,7 +15,7 @@ export class PagesService {
   ) {}
 
 
-  public getSinglePost(id: string): Observable<IPage> {
+  public getSinglePage(id: string): Observable<IPage> {
     return this.http.get<IPage>(`http://localhost:4202/pages/${id}`);
   }
 

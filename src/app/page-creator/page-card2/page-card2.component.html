@@ -16,7 +16,7 @@
     <mdb-card-text>{{page.description}}
     </mdb-card-text>
 
-    <a (click)="showPage(page.id)"  mdbBtn class="creator-btn" mdbWavesEffect>See more</a>
+    <a (click)="showPage(page.id)"  mdbBtn class="creator-btn" mdbWavesEffect>Read more</a>
     <app-page-options *ngIf="showOptions" (deleteOptionEvent)='delete($event)' (editPageEvent)="editPost($event)" [page]="page"></app-page-options>
   </mdb-card-body>
 </mdb-card>
