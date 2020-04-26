@@ -1,3 +1,52 @@
+:host ::ng-deep {
+  .sidebar-menu {
+    min-width: 200px;
+    background: #000;
+    padding-top: 30px;
+
+    .mat-drawer-inner-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .brand {
+      display: inline-block;
+      margin-bottom: 45px;
+    }
+
+    .menu {
+      width: 100%;
+      nav {
+        ul {
+          padding: 0 5px;
+          margin: 0;
+          list-style: none;
+          li {
+            display:block;
+            margin-bottom: 2px;
+            text-align: center;
+            background: #DE9A86;
+            transition: 0.3s all ease-in-out;
+
+            &:hover, &:focus, &.current {
+              background: #BF6D54;
+            }
+            a {
+              display: block;
+              font-weight: bold;
+              padding: 10px 0;
+              width: 100%;
+              height: 100%;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .page-creator-cont {
   position: absolute;
   top: 0;
@@ -6,8 +55,17 @@
   right: 0;
 }
 
+main {
+  height: 100%;
+}
+
 .container {
+  height: 100%;
   padding-top: 30px;
+  
+  .all-pages-container {
+    min-height: 90%;
+  }
 }
 
 .create-btn {
